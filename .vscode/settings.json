@@ -1,0 +1,7 @@
+{
+  "python.analysis.typeCheckingMode": "basic",
+  "editor.codeActionsOnSave": {
+    
+  },
+  "python.formatting.provider": "black"
+}
