@@ -6,3 +6,4 @@ class photoSerializer(serializers.ModelSerializer):
         model = photo
         fields = ('id','description','image_url')
         read_only_fields = ('id','created_at')
+
