@@ -7,7 +7,7 @@ import PhotosContainer from "../PhotoDisplay/PhotosContainer.jsx";
 import Modal from "../Misc/Modal.jsx";
 import Button from "../Misc/Button.jsx";
 
-const SERVER = "";
+const SERVER = "https://my-unplash.onrender.com/api";
 
 // Export all components
 export { Photo, AddButton, SearchField, UnplashLogo, PhotosContainer, Modal, Button, SERVER };
