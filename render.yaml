@@ -1,0 +1,20 @@
+databases:
+  - name: unplash
+    databaseName: my_unplash
+    user: my_unplash_user
+
+services:
+  - type: web
+    name: My Unplash
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "cd server && gunicorn mysite.wsgi:application"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: unplash
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
