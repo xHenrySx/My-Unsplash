@@ -1,7 +1,7 @@
 /* html */
 html {
   font-size: 62.5%;
-  background-color: #f5f5f5;
+  background-color: #fff;
 }
 
 body {
@@ -128,7 +128,7 @@ body {
 
 .grid-item {
   float: left;
-  padding: 1%;
+  padding: 0px 1.9% 1rem 0px;
   position: relative;
 }
 
