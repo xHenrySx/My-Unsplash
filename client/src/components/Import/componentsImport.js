@@ -7,7 +7,7 @@ import PhotosContainer from "../PhotoDisplay/PhotosContainer.jsx";
 import Modal from "../Misc/Modal.jsx";
 import Button from "../Misc/Button.jsx";
 
-const SERVER = "http://localhost:8000/api";
+const SERVER = "";
 
 // Export all components
 export { Photo, AddButton, SearchField, UnplashLogo, PhotosContainer, Modal, Button, SERVER };
