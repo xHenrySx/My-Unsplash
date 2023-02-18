@@ -107,7 +107,7 @@ else:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.postgresql",
-            "NAME": "my%20unplash",
+            "NAME": "myunplash",
             "USER": "xHenrySx",
             "PASSWORD": os.environ.get("PASSWORD"),
             "HOST": "ep-throbbing-block-154388.us-east-2.aws.neon.tech",
