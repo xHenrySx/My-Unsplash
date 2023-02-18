@@ -1,6 +1,7 @@
 import React from "react";
 import {Photo, SERVER } from "../Import/componentsImport.js"
 import axios from "axios";
+import { Masonry } from '@mui/lab';
 
 export default function PhotosContainer(props) {
 
@@ -37,28 +38,30 @@ export default function PhotosContainer(props) {
 
   return (
     <div className="grid">
-      <div className="grid-sizer"></div>
-      {searchedPhotos.length === 0 ?
-        photos.map((photo, index) => {
-        return (
-          <Photo
-            key={photo.id}
-            id={photo.id}
-            url={photo.image_url}
-            description={photo.description}
-          />
-        );
-        }) 
-      : searchedPhotos.map((photo, index) => {
-        return (
-          <Photo
-            key={photo.id}
-            id={photo.id}
-            url={photo.image_url}
-            description={photo.description}
-          />
-        );
-      })}
+      {/* <div className="grid-sizer"></div> */}
+      <Masonry columns={{ xs: 1, sm: 2, md: 3 }} spacing={1}>
+        {searchedPhotos.length === 0 ?
+          photos.map((photo, index) => {
+          return (
+            <Photo
+              key={photo.id}
+              id={photo.id}
+              url={photo.image_url}
+              description={photo.description}
+            />
+          );
+          }) 
+        : searchedPhotos.map((photo, index) => {
+          return (
+            <Photo
+              key={photo.id}
+              id={photo.id}
+              url={photo.image_url}
+              description={photo.description}
+            />
+          );
+        })}
+      </Masonry>
     </div>
   );
 }
