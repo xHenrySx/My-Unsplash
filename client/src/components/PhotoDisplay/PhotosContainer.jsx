@@ -38,7 +38,6 @@ export default function PhotosContainer(props) {
 
   return (
     <div className="grid">
-      {/* <div className="grid-sizer"></div> */}
       <Masonry columns={{ xs: 1, sm: 2, md: 3 }} spacing={1}>
         {searchedPhotos.length === 0 ?
           photos.map((photo, index) => {
