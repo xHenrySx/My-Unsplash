@@ -112,6 +112,9 @@ else:
             "PASSWORD": os.environ.get("PASSWORD"),
             "HOST": "ep-throbbing-block-154388.us-east-2.aws.neon.tech",
             "PORT": "5432",
+            "OPTIONS": {
+                "sslmode": "require",
+            },
         }
     }
 
