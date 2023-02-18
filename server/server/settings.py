@@ -24,16 +24,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 # To set the secret key to an environment variable write this
 
-SECRET_KEY = os.environ.get('SECRET_KEY', default='secret-key')
+SECRET_KEY = os.environ.get("SECRET_KEY", default="secret-key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'RENDER' not in os.environ
+DEBUG = "RENDER" not in os.environ
 
 ALLOWED_HOSTS = [
-    'localhost',
+    "localhost",
 ]
 
-RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME', default='localhost:8000')
+RENDER_EXTERNAL_HOSTNAME = os.environ.get(
+    "RENDER_EXTERNAL_HOSTNAME", default="localhost:8000"
+)
 
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
@@ -50,7 +52,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "api",
     "rest_framework",
-    "corsheaders"
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
@@ -65,9 +67,8 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 CORS_ORIGIN_ALLOW_ALL = True
-
 
 
 ROOT_URLCONF = "server.urls"
@@ -75,7 +76,7 @@ ROOT_URLCONF = "server.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        #os.path.join(BASE_DIR, 'client/build')
+        # os.path.join(BASE_DIR, 'client/build')
         "DIRS": [],
         "APP_DIRS": True,
         "OPTIONS": {
@@ -95,12 +96,24 @@ WSGI_APPLICATION = "server.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    "default": dj_database_url.config(
-        default="sqlite:///db.sqlite3",
-        conn_max_age=600,
-    )
-}
+if DEBUG:
+    DATABASES = {
+        "default": dj_database_url.config(
+            default="sqlite:///db.sqlite3",
+            conn_max_age=600,
+        )
+    }
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": "my%20unplash",
+            "USER": "xHenrySx",
+            "PASSWORD": os.environ.get("PASSWORD"),
+            "HOST": "ep-throbbing-block-154388.us-east-2.aws.neon.tech",
+            "PORT": "5432",
+        }
+    }
 
 
 # Password validation
@@ -140,10 +153,10 @@ USE_TZ = True
 STATIC_URL = "/static/"
 
 if not DEBUG:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-    
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
